@@ -14,6 +14,9 @@
 		EBD4AD442BA3AFE200D4BC88 /* MovieDBAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD432BA3AFE200D4BC88 /* MovieDBAppTests.swift */; };
 		EBD4AD4E2BA3AFE200D4BC88 /* MovieDBAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD4D2BA3AFE200D4BC88 /* MovieDBAppUITests.swift */; };
 		EBD4AD502BA3AFE200D4BC88 /* MovieDBAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD4F2BA3AFE200D4BC88 /* MovieDBAppUITestsLaunchTests.swift */; };
+		EBD4AD612BA3D38E00D4BC88 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD602BA3D38E00D4BC88 /* CoordinatorType.swift */; };
+		EBD4AD632BA3D49F00D4BC88 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD622BA3D49F00D4BC88 /* NavigationRoute.swift */; };
+		EBD4AD662BA3D59700D4BC88 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD652BA3D59700D4BC88 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		EBD4AD492BA3AFE200D4BC88 /* MovieDBAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD4AD4D2BA3AFE200D4BC88 /* MovieDBAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBAppUITests.swift; sourceTree = "<group>"; };
 		EBD4AD4F2BA3AFE200D4BC88 /* MovieDBAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EBD4AD602BA3D38E00D4BC88 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		EBD4AD622BA3D49F00D4BC88 /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
+		EBD4AD652BA3D59700D4BC88 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		EBD4AD312BA3AFDF00D4BC88 /* MovieDBApp */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4AD5C2BA3D27C00D4BC88 /* Source */,
 				EBD4AD322BA3AFDF00D4BC88 /* MovieDBAppApp.swift */,
 				EBD4AD342BA3AFDF00D4BC88 /* ContentView.swift */,
 				EBD4AD362BA3AFE100D4BC88 /* Assets.xcassets */,
@@ -125,6 +132,48 @@
 				EBD4AD4F2BA3AFE200D4BC88 /* MovieDBAppUITestsLaunchTests.swift */,
 			);
 			path = MovieDBAppUITests;
+			sourceTree = "<group>";
+		};
+		EBD4AD5C2BA3D27C00D4BC88 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD5E2BA3D31000D4BC88 /* Core */,
+				EBD4AD5D2BA3D28900D4BC88 /* Modules */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		EBD4AD5D2BA3D28900D4BC88 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD5F2BA3D34400D4BC88 /* Navigation */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		EBD4AD5E2BA3D31000D4BC88 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EBD4AD5F2BA3D34400D4BC88 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD642BA3D57200D4BC88 /* Coordinator */,
+				EBD4AD602BA3D38E00D4BC88 /* CoordinatorType.swift */,
+				EBD4AD622BA3D49F00D4BC88 /* NavigationRoute.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		EBD4AD642BA3D57200D4BC88 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD652BA3D59700D4BC88 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +308,9 @@
 			files = (
 				EBD4AD352BA3AFDF00D4BC88 /* ContentView.swift in Sources */,
 				EBD4AD332BA3AFDF00D4BC88 /* MovieDBAppApp.swift in Sources */,
+				EBD4AD612BA3D38E00D4BC88 /* CoordinatorType.swift in Sources */,
+				EBD4AD662BA3D59700D4BC88 /* MainCoordinator.swift in Sources */,
+				EBD4AD632BA3D49F00D4BC88 /* NavigationRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
