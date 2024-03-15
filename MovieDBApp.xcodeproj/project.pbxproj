@@ -20,6 +20,9 @@
 		EBD4AD6A2BA3E2C200D4BC88 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD692BA3E2C200D4BC88 /* ColorPalette.swift */; };
 		EBD4AD6C2BA3E41800D4BC88 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD6B2BA3E41800D4BC88 /* Color+Extensions.swift */; };
 		EBD4AD6F2BA3F3C200D4BC88 /* ImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD6E2BA3F3C200D4BC88 /* ImageSet.swift */; };
+		EBD4AD742BA3F6E300D4BC88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD732BA3F6E300D4BC88 /* NetworkManager.swift */; };
+		EBD4AD762BA3F83400D4BC88 /* MovieDBTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD752BA3F83400D4BC88 /* MovieDBTarget.swift */; };
+		EBD4AD782BA3FAE200D4BC88 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD772BA3FAE200D4BC88 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		EBD4AD692BA3E2C200D4BC88 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		EBD4AD6B2BA3E41800D4BC88 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		EBD4AD6E2BA3F3C200D4BC88 /* ImageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSet.swift; sourceTree = "<group>"; };
+		EBD4AD732BA3F6E300D4BC88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		EBD4AD752BA3F83400D4BC88 /* MovieDBTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBTarget.swift; sourceTree = "<group>"; };
+		EBD4AD772BA3FAE200D4BC88 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +115,6 @@
 				EBD4AD5C2BA3D27C00D4BC88 /* Source */,
 				EBD4AD322BA3AFDF00D4BC88 /* MovieDBAppApp.swift */,
 				EBD4AD342BA3AFDF00D4BC88 /* ContentView.swift */,
-				EBD4AD362BA3AFE100D4BC88 /* Assets.xcassets */,
 				EBD4AD382BA3AFE100D4BC88 /* Preview Content */,
 			);
 			path = MovieDBApp;
@@ -161,6 +166,8 @@
 		EBD4AD5E2BA3D31000D4BC88 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4AD792BA4029500D4BC88 /* Services */,
+				EBD4AD702BA3F5B100D4BC88 /* Networking */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 		EBD4AD672BA3E1AA00D4BC88 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4AD362BA3AFE100D4BC88 /* Assets.xcassets */,
 				EBD4AD6D2BA3F39400D4BC88 /* Image */,
 				EBD4AD682BA3E1C500D4BC88 /* Color */,
 			);
@@ -207,6 +215,23 @@
 				EBD4AD6E2BA3F3C200D4BC88 /* ImageSet.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		EBD4AD702BA3F5B100D4BC88 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD732BA3F6E300D4BC88 /* NetworkManager.swift */,
+				EBD4AD752BA3F83400D4BC88 /* MovieDBTarget.swift */,
+				EBD4AD772BA3FAE200D4BC88 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EBD4AD792BA4029500D4BC88 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD4AD742BA3F6E300D4BC88 /* NetworkManager.swift in Sources */,
+				EBD4AD762BA3F83400D4BC88 /* MovieDBTarget.swift in Sources */,
 				EBD4AD6F2BA3F3C200D4BC88 /* ImageSet.swift in Sources */,
 				EBD4AD352BA3AFDF00D4BC88 /* ContentView.swift in Sources */,
 				EBD4AD332BA3AFDF00D4BC88 /* MovieDBAppApp.swift in Sources */,
@@ -346,6 +373,7 @@
 				EBD4AD662BA3D59700D4BC88 /* MainCoordinator.swift in Sources */,
 				EBD4AD6C2BA3E41800D4BC88 /* Color+Extensions.swift in Sources */,
 				EBD4AD632BA3D49F00D4BC88 /* NavigationRoute.swift in Sources */,
+				EBD4AD782BA3FAE200D4BC88 /* NetworkError.swift in Sources */,
 				EBD4AD6A2BA3E2C200D4BC88 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
