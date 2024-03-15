@@ -21,8 +21,6 @@ protocol MovieDBTargetType {
     var parameters: [String: Any]? { get }
     var method: RequestMethod { get }
     var url: URL? { get }
-
-    func buildURLRequest() -> URLRequest
 }
 
 extension MovieDBTargetType {

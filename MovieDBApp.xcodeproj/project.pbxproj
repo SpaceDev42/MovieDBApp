@@ -23,6 +23,11 @@
 		EBD4AD742BA3F6E300D4BC88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD732BA3F6E300D4BC88 /* NetworkManager.swift */; };
 		EBD4AD762BA3F83400D4BC88 /* MovieDBTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD752BA3F83400D4BC88 /* MovieDBTarget.swift */; };
 		EBD4AD782BA3FAE200D4BC88 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD772BA3FAE200D4BC88 /* NetworkError.swift */; };
+		EBD4AD7C2BA4037E00D4BC88 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD7B2BA4037E00D4BC88 /* LoginService.swift */; };
+		EBD4AD7F2BA403FD00D4BC88 /* LoginSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD7E2BA403FD00D4BC88 /* LoginSession.swift */; };
+		EBD4AD812BA4043B00D4BC88 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD802BA4043B00D4BC88 /* LoginCredentials.swift */; };
+		EBD4AD832BA4082A00D4BC88 /* LoginServiceTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD822BA4082A00D4BC88 /* LoginServiceTarget.swift */; };
+		EBD4AD862BA40B9400D4BC88 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD852BA40B9400D4BC88 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,11 @@
 		EBD4AD732BA3F6E300D4BC88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EBD4AD752BA3F83400D4BC88 /* MovieDBTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBTarget.swift; sourceTree = "<group>"; };
 		EBD4AD772BA3FAE200D4BC88 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EBD4AD7B2BA4037E00D4BC88 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		EBD4AD7E2BA403FD00D4BC88 /* LoginSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSession.swift; sourceTree = "<group>"; };
+		EBD4AD802BA4043B00D4BC88 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
+		EBD4AD822BA4082A00D4BC88 /* LoginServiceTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTarget.swift; sourceTree = "<group>"; };
+		EBD4AD852BA40B9400D4BC88 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +176,7 @@
 		EBD4AD5E2BA3D31000D4BC88 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4AD842BA40B7F00D4BC88 /* Utilities */,
 				EBD4AD792BA4029500D4BC88 /* Services */,
 				EBD4AD702BA3F5B100D4BC88 /* Networking */,
 			);
@@ -230,8 +241,36 @@
 		EBD4AD792BA4029500D4BC88 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4AD7A2BA4035300D4BC88 /* LoginService */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EBD4AD7A2BA4035300D4BC88 /* LoginService */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD7D2BA403C600D4BC88 /* Models */,
+				EBD4AD7B2BA4037E00D4BC88 /* LoginService.swift */,
+				EBD4AD822BA4082A00D4BC88 /* LoginServiceTarget.swift */,
+			);
+			path = LoginService;
+			sourceTree = "<group>";
+		};
+		EBD4AD7D2BA403C600D4BC88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD7E2BA403FD00D4BC88 /* LoginSession.swift */,
+				EBD4AD802BA4043B00D4BC88 /* LoginCredentials.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EBD4AD842BA40B7F00D4BC88 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EBD4AD852BA40B9400D4BC88 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,8 +409,13 @@
 				EBD4AD352BA3AFDF00D4BC88 /* ContentView.swift in Sources */,
 				EBD4AD332BA3AFDF00D4BC88 /* MovieDBAppApp.swift in Sources */,
 				EBD4AD612BA3D38E00D4BC88 /* CoordinatorType.swift in Sources */,
+				EBD4AD7F2BA403FD00D4BC88 /* LoginSession.swift in Sources */,
+				EBD4AD862BA40B9400D4BC88 /* Constants.swift in Sources */,
 				EBD4AD662BA3D59700D4BC88 /* MainCoordinator.swift in Sources */,
+				EBD4AD7C2BA4037E00D4BC88 /* LoginService.swift in Sources */,
 				EBD4AD6C2BA3E41800D4BC88 /* Color+Extensions.swift in Sources */,
+				EBD4AD832BA4082A00D4BC88 /* LoginServiceTarget.swift in Sources */,
+				EBD4AD812BA4043B00D4BC88 /* LoginCredentials.swift in Sources */,
 				EBD4AD632BA3D49F00D4BC88 /* NavigationRoute.swift in Sources */,
 				EBD4AD782BA3FAE200D4BC88 /* NetworkError.swift in Sources */,
 				EBD4AD6A2BA3E2C200D4BC88 /* ColorPalette.swift in Sources */,
