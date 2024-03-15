@@ -15,7 +15,7 @@ protocol MainCoordinatorType: CoordinatorType {
 }
 
 // MARK: - App Main Coordinator
-class MainCoordinator: MainCoordinatorType {
+class MainCoordinator: ObservableObject, MainCoordinatorType {
     var navigationController: UINavigationController?
     
     func start() {

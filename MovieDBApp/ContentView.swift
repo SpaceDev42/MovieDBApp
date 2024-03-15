@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var mainCoordinator: MainCoordinator = .init()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
+            .padding()
+            .environmentObject(mainCoordinator)
         }
-        .padding()
     }
 }
 
