@@ -31,15 +31,24 @@ struct LoginService: LoginServiceType {
     }
     
     func fetchTokenResponse() -> AnyPublisher<TokenCrediential, Error> {
-        <#code#>
+        dependencies
+            .networkManager
+            .execute(on: LoginServiceTarget.requestToken, decoder: .init())
+            .eraseToAnyPublisher()
     }
     
     func createSession(with token: String) -> AnyPublisher<LoginSession, Error> {
-        <#code#>
+        dependencies
+            .networkManager
+            .execute(on: LoginServiceTarget.newSession(token: token), decoder: .init())
+            .eraseToAnyPublisher()
     }
     
-    func login(using: LoginCredential) -> AnyPublisher<TokenCrediential, Error> {
-        <#code#>
+    func login(using credentials: LoginCredential) -> AnyPublisher<TokenCrediential, Error> {
+        dependencies
+            .networkManager
+            .execute(on: LoginServiceTarget.login(credentials: credentials), decoder: .init())
+            .eraseToAnyPublisher()
     }
 }
 

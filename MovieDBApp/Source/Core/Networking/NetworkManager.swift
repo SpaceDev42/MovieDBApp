@@ -46,7 +46,7 @@ class NetworkManager: NetworkManagerType {
 
 // MARK: - URLSession Extension
 extension URLSession: NetworkRequesterType {
-    func buildURLRequest(for target: MovieDBTargetType) -> URLRequest? {
+    private func buildURLRequest(for target: MovieDBTargetType) -> URLRequest? {
         guard let url = target.url else { return nil }
         
         var request = URLRequest(url: url)
@@ -72,8 +72,8 @@ extension URLSession: NetworkRequesterType {
         
         return dataTaskPublisher(for: request)
             .tryMap { data, response in
-                guard let response = response as? HTTPURLResponse,
-                      (200..<300).contains(response.statusCode)
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200..<300).contains(httpResponse.statusCode)
                 else {
                     throw NetworkError.failedRequest
                 }

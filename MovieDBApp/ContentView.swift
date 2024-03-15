@@ -12,14 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .padding()
-            .environmentObject(mainCoordinator)
+            LoginView()
+                .environmentObject(mainCoordinator)
         }
     }
 }
