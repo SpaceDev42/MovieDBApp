@@ -1,5 +1,5 @@
 //
-//  MovieDBAppApp.swift
+//  MovieDBApp.swift
 //  MovieDBApp
 //
 //  Created by Vladimir Guevara on 14/3/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MovieDBAppApp: App {
+struct MovieDBApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

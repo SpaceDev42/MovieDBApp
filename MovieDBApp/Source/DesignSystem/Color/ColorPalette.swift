@@ -23,6 +23,7 @@ struct ColorPalette {
         case dark
         case dark2
         case dark85
+        case secondaryDark
         case slateGrey
     }
 }
