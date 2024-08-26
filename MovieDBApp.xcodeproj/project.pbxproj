@@ -36,6 +36,7 @@
 		EBD4AD892BA40D0500D4BC88 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD882BA40D0500D4BC88 /* LoginView.swift */; };
 		EBD4AD8B2BA40D2E00D4BC88 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD8A2BA40D2E00D4BC88 /* LoginViewModel.swift */; };
 		EBD4AD8E2BA4145500D4BC88 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD4AD8D2BA4145500D4BC88 /* KeychainHelper.swift */; };
+		EBE5337B2C7A726F00C9875C /* Dictionary+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5337A2C7A726F00C9875C /* Dictionary+Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		EBD4AD882BA40D0500D4BC88 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EBD4AD8A2BA40D2E00D4BC88 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EBD4AD8D2BA4145500D4BC88 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		EBE5337A2C7A726F00C9875C /* Dictionary+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +222,6 @@
 			children = (
 				EB00E4152BA43C920037F7D5 /* TVShows */,
 				EBD4AD872BA40CEF00D4BC88 /* Login */,
-				EBD4AD5F2BA3D34400D4BC88 /* Navigation */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -228,6 +229,7 @@
 		EBD4AD5E2BA3D31000D4BC88 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EBD4AD5F2BA3D34400D4BC88 /* Navigation */,
 				EB00E41C2BA43F6D0037F7D5 /* Extensions */,
 				EBD4AD8C2BA4142600D4BC88 /* Keychain */,
 				EBD4AD842BA40B7F00D4BC88 /* Utilities */,
@@ -323,6 +325,7 @@
 		EBD4AD842BA40B7F00D4BC88 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EBE533792C7A725400C9875C /* Json */,
 				EBD4AD852BA40B9400D4BC88 /* Constants.swift */,
 			);
 			path = Utilities;
@@ -343,6 +346,14 @@
 				EBD4AD8D2BA4145500D4BC88 /* KeychainHelper.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		EBE533792C7A725400C9875C /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5337A2C7A726F00C9875C /* Dictionary+Codable.swift */,
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +499,7 @@
 				EB00E4122BA42F0B0037F7D5 /* MoviesModels.swift in Sources */,
 				EBD4AD7F2BA403FD00D4BC88 /* LoginSession.swift in Sources */,
 				EBD4AD862BA40B9400D4BC88 /* Constants.swift in Sources */,
+				EBE5337B2C7A726F00C9875C /* Dictionary+Codable.swift in Sources */,
 				EBD4AD8B2BA40D2E00D4BC88 /* LoginViewModel.swift in Sources */,
 				EBD4AD662BA3D59700D4BC88 /* MainCoordinator.swift in Sources */,
 				EBD4AD7C2BA4037E00D4BC88 /* LoginService.swift in Sources */,

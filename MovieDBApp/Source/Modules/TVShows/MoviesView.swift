@@ -28,6 +28,10 @@ struct MoviesView: View {
         .padding(.top, 10)
         .padding(.horizontal, 20)
         .background(Color(backgroundColor: .almostBlack))
+        .navigationTitle("Movies")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color(neutralColor: .secondaryDark), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar) 
     }
     
     // MARK: - Categories

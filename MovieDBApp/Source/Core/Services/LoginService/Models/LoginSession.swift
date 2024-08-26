@@ -7,6 +7,16 @@
 
 import Foundation
 
+// MARK: - Login Parameters
+struct sessionRequest: Codable {
+    let requestToken: String
+    
+    enum CodingKeys: String, CodingKey {
+        case requestToken = "request_token"
+    }
+}
+
+// MARK: - Login Session
 struct LoginSession: Codable {
     var success: Bool
     var sessionId: String?

@@ -58,7 +58,6 @@ struct LoginView: View {
             }
             .foregroundStyle(.black)
             .padding()
-            .frame(width: 208, height: 52)
             .background(Color.white)
             .cornerRadius(5)
             .textInputAutocapitalization(.never)
@@ -67,6 +66,7 @@ struct LoginView: View {
             loginButton
         }
         .font(.custom("SFProText-Bold", size: 14))
+        .padding(.horizontal, 80)
     }
 
     private var loginButton: some View {
@@ -77,14 +77,15 @@ struct LoginView: View {
                 ProgressView()
             } else {
                 Text("Log in")
+                    
             }
         }
+        .buttonStyle(.borderless)
+        .frame(maxWidth: .infinity)
+        .disabled(viewModel.loginDisabled)
         .tint(Color.white)
         .padding()
-        .frame(width: 208, height: 52)
         .background(Color(mainColor: .algaeGreen))
         .cornerRadius(5)
-        .disabled(viewModel.loginDisabled)
-        .buttonStyle(.borderless)
     }
 }

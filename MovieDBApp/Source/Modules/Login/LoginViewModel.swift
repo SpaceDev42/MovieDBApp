@@ -48,12 +48,12 @@ class LoginViewModel: ObservableObject {
         
         dependencies
             .loginService
-            .fetchTokenResponse()
+            .requestToken()
             .flatMap { [weak self] tokenResponse in
                 guard let self = self,
                       let token = tokenResponse.requestToken
                 else {
-                    return Fail<TokenCrediential, Error>(error: NetworkError.invalidResponse)
+                    return Fail<AuthenticationResponse, Error>(error: NetworkError.invalidResponse)
                         .eraseToAnyPublisher()
                 }
                 
@@ -75,7 +75,7 @@ class LoginViewModel: ObservableObject {
                     return Fail<LoginSession, Error>(error: NetworkError.invalidResponse)
                         .eraseToAnyPublisher()
                 }
-
+                
                 return self.dependencies
                     .loginService
                     .createSession(with: token)

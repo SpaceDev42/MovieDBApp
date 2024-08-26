@@ -12,13 +12,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            MoviesView()
-                .environmentObject(mainCoordinator)
-                .navigationTitle("Movies")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbarBackground(Color(neutralColor: .dark), for: .navigationBar)
-                .toolbarBackground(.visible, for: .navigationBar)
+            LoginView()
         }
+        .environmentObject(mainCoordinator)
     }
 }
 

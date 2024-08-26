@@ -56,7 +56,7 @@ extension MainNavigationRoute {
     func getView(coordinator: CoordinatorType) -> (any View)? {
         switch self {
         case .tvShows:
-            EmptyView()
+            MoviesView()
         case .showDetail:
             EmptyView()
         }

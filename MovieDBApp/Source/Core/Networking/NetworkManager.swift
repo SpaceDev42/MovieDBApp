@@ -53,8 +53,7 @@ extension URLSession: NetworkRequesterType {
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.cachePolicy = .returnCacheDataElseLoad
-        URLCache.shared.memoryCapacity = 536 * 1024 * 1024
+        request.addValue("Bearer " + Constant.accessToken, forHTTPHeaderField: "Authorization")
 
         request.httpMethod = target.method.rawValue
         request.httpBody = target.body
@@ -75,7 +74,7 @@ extension URLSession: NetworkRequesterType {
                 guard let httpResponse = response as? HTTPURLResponse,
                       (200..<300).contains(httpResponse.statusCode)
                 else {
-                    throw NetworkError.failedRequest
+                    return data
                 }
                 
                 return data

@@ -8,14 +8,14 @@
 import Foundation
 
 enum LoginServiceTarget: MovieDBTargetType {
-    case newSession(token: String)
+    case newSession(request: sessionRequest)
     case requestToken
     case login(credentials: LoginCredential)
 }
 
 extension LoginServiceTarget {
     var parameters: [String : Any]? {
-        ["api_key": Constant.apiKey]
+        return AuthenticationParameters.default.encodeAsDictionary()
     }
     
     var path: String {
@@ -42,10 +42,8 @@ extension LoginServiceTarget {
         switch self {
         case .requestToken:
             return nil
-        case .newSession(let token):
-            let tokenCredential = TokenCrediential(requestToken: token)
-
-            return try? JSONEncoder().encode(tokenCredential)
+        case .newSession(let request):
+            return try? JSONEncoder().encode(request)
         case .login(let credentials):
             return try? JSONEncoder().encode(credentials)
         }

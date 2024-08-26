@@ -15,9 +15,9 @@ protocol HasLoginService {
 
 // MARK: - Login Service Type
 protocol LoginServiceType {
-    func fetchTokenResponse() -> AnyPublisher<TokenCrediential, Error>
+    func requestToken() -> AnyPublisher<AuthenticationResponse, Error>
     func createSession(with token: String) -> AnyPublisher<LoginSession, Error>
-    func login(using: LoginCredential) ->  AnyPublisher<TokenCrediential, Error>
+    func login(using: LoginCredential) ->  AnyPublisher<AuthenticationResponse, Error>
 }
 
 // MARK: - Service
@@ -30,7 +30,7 @@ struct LoginService: LoginServiceType {
         self.dependencies = dependencies
     }
     
-    func fetchTokenResponse() -> AnyPublisher<TokenCrediential, Error> {
+    func requestToken() -> AnyPublisher<AuthenticationResponse, Error> {
         dependencies
             .networkManager
             .execute(on: LoginServiceTarget.requestToken, decoder: .init())
@@ -40,11 +40,11 @@ struct LoginService: LoginServiceType {
     func createSession(with token: String) -> AnyPublisher<LoginSession, Error> {
         dependencies
             .networkManager
-            .execute(on: LoginServiceTarget.newSession(token: token), decoder: .init())
+            .execute(on: LoginServiceTarget.newSession(request: .init(requestToken: token)), decoder: .init())
             .eraseToAnyPublisher()
     }
     
-    func login(using credentials: LoginCredential) -> AnyPublisher<TokenCrediential, Error> {
+    func login(using credentials: LoginCredential) -> AnyPublisher<AuthenticationResponse, Error> {
         dependencies
             .networkManager
             .execute(on: LoginServiceTarget.login(credentials: credentials), decoder: .init())
