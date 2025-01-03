@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: Main Coordinator Type
 protocol MainCoordinatorType: CoordinatorType {
+    func presentLogin()
     func presentTVshows()
     func presentShowDetail()
 }
@@ -18,6 +19,14 @@ protocol MainCoordinatorType: CoordinatorType {
 class MainCoordinator: ObservableObject, MainCoordinatorType {
     var navigationController: UINavigationController?
     
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+        
+    func presentLogin() {
+        show(route: )
+    }
+
     func start() {
         presentTVshows()
     }

@@ -42,6 +42,7 @@ enum NavigationTranisitionStyle {
 
 // MARK: - Main Navigation Route
 enum MainNavigationRoute: NavigationRoute {
+    case login
     case tvShows
     case showDetail
 }
@@ -55,6 +56,8 @@ extension MainNavigationRoute {
     
     func getView(coordinator: CoordinatorType) -> (any View)? {
         switch self {
+        case .login:
+            LoginView()
         case .tvShows:
             MoviesView()
         case .showDetail:
