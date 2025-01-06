@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+// MARK: - Remove methods that are using Combine
 // MARK: -  Network Manager Dependency
 protocol HasNetworkManager {
     var networkManager: NetworkManagerType { get set }
@@ -15,16 +16,14 @@ protocol HasNetworkManager {
 
 // MARK: - Network Manager Protocols
 protocol NetworkManagerType {
-    func execute<T: Decodable>(on target: MovieDBTargetType,
-                               decoder: JSONDecoder) -> AnyPublisher<T, Error>
+    func execute<T: Codable>(on target: MovieDBTargetType, decoder: JSONDecoder) -> AnyPublisher<T, Error>
+    func execute<T: Codable>(on target: MovieDBTargetType, decoder: JSONDecoder) async throws -> T
 }
 
 // MARK: - Network Requester Protocols
 protocol NetworkRequesterType {
-    func requestData<T: Decodable>(
-        for target: MovieDBTargetType,
-        with decoder: JSONDecoder
-    ) -> AnyPublisher<T, Error>
+    func requestData<T: Codable>(for target: MovieDBTargetType,with decoder: JSONDecoder) -> AnyPublisher<T, Error>
+    func requestData<T: Codable>(for target: MovieDBTargetType,with decoder: JSONDecoder) async throws -> T
 }
 
 
@@ -36,11 +35,19 @@ class NetworkManager: NetworkManagerType {
         self.requester = requester
     }
     
-    func execute<T: Decodable>(
+    // MARK: - Execute Network Request
+    func execute<T: Codable>(
         on target: MovieDBTargetType,
-        decoder: JSONDecoder = JSONDecoder()
+        decoder: JSONDecoder = .init()
     ) -> AnyPublisher<T, Error> {
-        return requester.requestData(for: target, with: decoder)
+        requester.requestData(for: target, with: decoder)
+    }
+    
+    func execute<T: Codable>(
+        on target: any MovieDBTargetType,
+        decoder: JSONDecoder = .init()
+    ) async throws -> T  {
+        try await requester.requestData(for: target, with: decoder)
     }
 }
 
@@ -69,6 +76,7 @@ extension URLSession: NetworkRequesterType {
             return Empty().eraseToAnyPublisher()
         }
         
+        // MARK: - Combine Implementation
         return dataTaskPublisher(for: request)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse,
@@ -81,6 +89,26 @@ extension URLSession: NetworkRequesterType {
             }
             .decode(type: T.self, decoder: decoder)
             .eraseToAnyPublisher()
+    }
+    
+    // MARK: - Async Await Implementation
+    func requestData<T: Codable>(
+        for target: MovieDBTargetType,
+        with decoder: JSONDecoder
+    ) async throws -> T {
+        guard let request = buildURLRequest(for: target) else {
+            throw NetworkError.failedRequest
+        }
+        
+        let (data, response) = try await data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200..<300).contains(httpResponse.statusCode)
+        else {
+            throw NetworkError.invalidResponse
+        }
+        
+        return try decoder.decode(T.self, from: data)
     }
 }
 
