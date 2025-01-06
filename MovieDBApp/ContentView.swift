@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var mainCoordinator: MainCoordinator = .init()
     
     var body: some View {
         NavigationView {
-            LoginView()
+            Color.red
         }
-        .environmentObject(mainCoordinator)
+        .ignoresSafeArea()
     }
 }
 
