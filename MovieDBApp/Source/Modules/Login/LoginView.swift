@@ -67,21 +67,23 @@ struct LoginView: View {
 
     private var loginButton: some View {
         Button {
-            viewModel.validateUserCredentials()
+            viewModel.login()
         } label: {
-            if viewModel.isLogging {
-                ProgressView()
-            } else {
-                Text("Log in")
-                    
+            ZStack {
+                if viewModel.isLogging {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Text("Log in")
+                        .frame(maxWidth: .infinity) // Ensures the text expands to fill the button width
+                }
             }
+            .padding()
+            .background(Color(mainColor: .algaeGreen))
+            .cornerRadius(5)
+            .tint(Color.white) // Applies the tint to the text or ProgressView
         }
         .buttonStyle(.borderless)
-        .frame(maxWidth: .infinity)
         .disabled(viewModel.loginDisabled)
-        .tint(Color.white)
-        .padding()
-        .background(Color(mainColor: .algaeGreen))
-        .cornerRadius(5)
     }
 }
