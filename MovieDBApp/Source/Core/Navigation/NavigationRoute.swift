@@ -57,11 +57,12 @@ extension MainNavigationRoute {
     func getView(coordinator: CoordinatorType) -> (any View)? {
         switch self {
         case .login:
-            LoginView()
+            let viewModel = LoginViewModel(dependencies: LoginViewModelDependencies(), coordinator: coordinator)
+            return LoginView(viewModel: viewModel)
         case .tvShows:
-            MoviesView()
+            return MoviesView()
         case .showDetail:
-            EmptyView()
+            return EmptyView()
         }
     }
 }

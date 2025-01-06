@@ -24,11 +24,11 @@ class MainCoordinator: ObservableObject, MainCoordinatorType {
     }
         
     func presentLogin() {
-        show(route: )
+        show(route: .login)
     }
 
     func start() {
-        presentTVshows()
+        presentLogin()
     }
     
     func presentTVshows() {
