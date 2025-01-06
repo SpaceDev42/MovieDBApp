@@ -43,60 +43,47 @@ class LoginViewModel: ObservableObject {
         username = ""
         password = ""
     }
-    
-    // MARK: - Authentication
-    func validateUserCredentials() {
+
+    // MARK: - Login
+    func login() {
         isLogging = true
         
-        dependencies
-            .loginService
-            .requestToken()
-            .flatMap { [weak self] tokenResponse in
-                guard let self = self,
-                      let token = tokenResponse.requestToken
-                else {
-                    return Fail<AuthenticationResponse, Error>(error: NetworkError.invalidResponse)
-                        .eraseToAnyPublisher()
-                }
-                
-                let credentials = LoginCredential(
-                    username: self.username,
-                    password: self.password,
-                    requestToken: token
-                )
-                
-                return self.dependencies
-                    .loginService
-                    .login(using: credentials)
-                    .eraseToAnyPublisher()
+        Task {
+            do {
+                try await validateCredentials()
+            } catch {
+                isLogging = false
+                showingAlert = true
             }
-            .flatMap { [weak self] tokenResponse  in
-                guard let self = self,
-                      let token = tokenResponse.requestToken
-                else {
-                    return Fail<LoginSession, Error>(error: NetworkError.invalidResponse)
-                        .eraseToAnyPublisher()
-                }
-                
-                return self.dependencies
-                    .loginService
-                    .createSession(with: token)
-                    .eraseToAnyPublisher()
-            }
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                guard case let .failure(error) = completion else { return }
-                self?.isLogging = false
-                self?.showingAlert = true
-            } receiveValue: { [weak self] sessionResponse in
-                guard let self = self, let sessionId = sessionResponse.sessionId else { return }
+        }
+    }
+    
+    // MARK: - Validate Credentials
+    private func validateCredentials() async throws {
+        let loginService = dependencies.loginService
 
-                
-                self.isLogging = false
-                try? self.dependencies.keychainHelper.setString(sessionId, for: KeychainServiceKey.sessionId.rawValue)
-                self.coordinator?.presentTVshows()
-            }
-            .store(in: &cancellables)
+        guard let requestToken = try await loginService.requestToken().requestToken else {
+            throw NetworkError.invalidResponse
+        }
+        
+        let credentials = LoginCredential(username: username, password: password, requestToken: requestToken)
+        
+        guard let validatedToken = try await loginService.login(using: credentials).requestToken else {
+            throw NetworkError.invalidResponse
+        }
+
+        let sessionResponse = try await loginService.createSession(with: validatedToken)
+        await handleSessionResponse(sessionResponse)
+    }
+
+    // MARK: - Handle Session Response
+    @MainActor
+    private func handleSessionResponse(_ response: LoginSession) {
+        guard let sessionId = response.sessionId else { return }
+
+        isLogging = false
+        coordinator?.presentTVshows()
+        try? dependencies.keychainHelper.setString(sessionId, for: KeychainServiceKey.sessionId.rawValue)
     }
 }
 
