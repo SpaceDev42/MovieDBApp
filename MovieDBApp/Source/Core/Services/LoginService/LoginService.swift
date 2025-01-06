@@ -14,13 +14,19 @@ protocol HasLoginService {
 }
 
 // MARK: - Login Service Type
+// TODO: Remove methods implemented with Combine
 protocol LoginServiceType {
     func requestToken() -> AnyPublisher<AuthenticationResponse, Error>
     func createSession(with token: String) -> AnyPublisher<LoginSession, Error>
-    func login(using: LoginCredential) ->  AnyPublisher<AuthenticationResponse, Error>
+    func login(using credentials: LoginCredential) ->  AnyPublisher<AuthenticationResponse, Error>
+    
+    func requestToken() async throws -> AuthenticationResponse
+    func createSession(with token: String) async throws -> LoginSession
+    func login(using credentials: LoginCredential) async throws ->  AuthenticationResponse
 }
 
 // MARK: - Service
+// TODO: Remove methods implemented with Combine
 struct LoginService: LoginServiceType {
     typealias Dependencies = HasNetworkManager
     
@@ -30,6 +36,7 @@ struct LoginService: LoginServiceType {
         self.dependencies = dependencies
     }
     
+    // MARK: - Combine
     func requestToken() -> AnyPublisher<AuthenticationResponse, Error> {
         dependencies
             .networkManager
@@ -49,6 +56,23 @@ struct LoginService: LoginServiceType {
             .networkManager
             .execute(on: LoginServiceTarget.login(credentials: credentials), decoder: .init())
             .eraseToAnyPublisher()
+    }
+    
+    // MARK: - Async Await
+    func requestToken() async throws -> AuthenticationResponse {
+        try await dependencies.networkManager.execute(on: LoginServiceTarget.requestToken, decoder: .init())
+    }
+    
+    func createSession(with token: String) async throws -> LoginSession {
+        try await dependencies
+            .networkManager
+            .execute(on: LoginServiceTarget.newSession(request: .init(requestToken: token)), decoder: .init())
+    }
+    
+    func login(using credentials: LoginCredential) async throws -> AuthenticationResponse {
+        try await dependencies
+            .networkManager
+            .execute(on: LoginServiceTarget.login(credentials: credentials), decoder: .init())
     }
 }
 

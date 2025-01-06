@@ -36,6 +36,7 @@ class NetworkManager: NetworkManagerType {
     }
     
     // MARK: - Execute Network Request
+    /// This method execute a network request using Combine
     func execute<T: Codable>(
         on target: MovieDBTargetType,
         decoder: JSONDecoder = .init()
@@ -43,6 +44,7 @@ class NetworkManager: NetworkManagerType {
         requester.requestData(for: target, with: decoder)
     }
     
+    /// This method execute a network request using Swift Concurrency
     func execute<T: Codable>(
         on target: any MovieDBTargetType,
         decoder: JSONDecoder = .init()
@@ -68,6 +70,7 @@ extension URLSession: NetworkRequesterType {
         return request
     }
     
+    /// This method request using Combine
     func requestData<T: Decodable>(
         for target: MovieDBTargetType,
         with decoder: JSONDecoder
@@ -91,7 +94,7 @@ extension URLSession: NetworkRequesterType {
             .eraseToAnyPublisher()
     }
     
-    // MARK: - Async Await Implementation
+    /// This method request using Swift Concurrency
     func requestData<T: Codable>(
         for target: MovieDBTargetType,
         with decoder: JSONDecoder
