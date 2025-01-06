@@ -21,6 +21,7 @@ class LoginViewModel: ObservableObject {
 
     // MARK: - Properties
     private let dependencies: Dependencies
+    private let coordinator: MainCoordinatorType?
     private var cancellables: Set<AnyCancellable> = []
     var loginSubject: PassthroughSubject<Void, Never> = .init()
     
@@ -32,8 +33,9 @@ class LoginViewModel: ObservableObject {
     }
 
     // MARK: - Initialization
-    init(dependencies: Dependencies) {
+    init(dependencies: Dependencies, coordinator: CoordinatorType) {
         self.dependencies = dependencies
+        self.coordinator = coordinator as? MainCoordinator
     }
     
     // MARK: - Reset Credentials
@@ -92,7 +94,7 @@ class LoginViewModel: ObservableObject {
                 
                 self.isLogging = false
                 try? self.dependencies.keychainHelper.setString(sessionId, for: KeychainServiceKey.sessionId.rawValue)
-                self.loginSubject.send()
+                self.coordinator?.presentTVshows()
             }
             .store(in: &cancellables)
     }

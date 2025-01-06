@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject private var coordinator: MainCoordinator
-    @StateObject private var viewModel = LoginViewModel(dependencies: LoginViewModelDependencies())
+    @StateObject  var viewModel: LoginViewModel
 
     var body: some View {
         ZStack{
@@ -36,9 +35,6 @@ struct LoginView: View {
         }, message: {
             Text(viewModel.errorMessage ?? "")
         })
-        .onReceive(viewModel.loginSubject) { _ in
-            coordinator.presentTVshows()
-        }
     }
 
     private var userCredentialsView: some View {
